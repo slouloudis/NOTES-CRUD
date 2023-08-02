@@ -249,6 +249,73 @@ And our app is now working! :)
 We've finished all the crud operations! Well done. 
 
 
+## React router quick demo -> 
+
+### install react-router dom
+
+`npm install react-router-dom`
+
+
+In my components folder, I'm going to create a new component called LandingPage.js
+
+```javascript
+import React from 'react'
+
+export default function LandingPage() {
+  return (
+    <div>
+      <h2>This is my landing page</h2>
+      <button>Go to the collection</button>
+    </div>
+  )
+}
+```
+
+Then update our App.js to look like this: 
+```javascript
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+import Main from './components/Main';
+import LandingPage from './components/LandingPage';
+
+function App() {
+  return (
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path='/' element={<LandingPage/>}/>
+          <Route path='/collection' element={<Main/>}/>
+        </Routes>
+      </Router>
+    </div>
+  );
+}
+
+export default App;
+```
+
+now if we vist localhost:3000/ we will get the landing page,
+and if we visit localhost:3000/collection, we will get the main component. 
+
+Finally, lets add a button to go to our /collection page
+
+```javascript
+import React from 'react'
+import { Link } from 'react-router-dom'
+
+export default function LandingPage() {
+  return (
+    <div>
+      <h2>This is my landing page</h2>
+      <button><Link to='/collection'>Go to movies</Link></button>
+    </div>
+  )
+}
+```
+
+
+
 
 
 
